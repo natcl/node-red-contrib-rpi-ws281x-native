@@ -1,13 +1,16 @@
 <script type="text/javascript">
-    RED.nodes.registerType('rpi-ws2801', {
-        category: 'hardware',
-        color: '#e9967a',
+    RED.nodes.registerType('rpi-ws281x-native', {
+        category: 'Raspberry Pi',
+        color: '#c6dbef',
         defaults: {
             numleds: {
                 value: 1
             },
-            port: {
-                value: ""
+            mode: {
+                value: "default"
+            },
+            rowLength: {
+                value: 0
             },
             name: {
                 value: ""
@@ -15,22 +18,22 @@
         },
         inputs: 1,
         outputs: 0,
-        icon: "light.png",
+        icon: "rpi.png",
         label: function() {
-            return this.name || "ws2801";
+            return this.name || "ws281x";
         },
-        paletteLabel: "ws2801"
+        paletteLabel: "ws281x"
     });
 </script>
 
-<script type="text/x-red" data-template-name="rpi-ws2801">
+<script type="text/x-red" data-template-name="rpi-ws281x-native">
     <div class="form-row">
         <label for="node-input-numleds" style="width:145px;"><i class="fa fa-list-ol"></i> Number of LEDs</label>
         <input type="text" id="node-input-numleds" placeholder="" style="width:10%;">
     </div>
     <div class="form-row">
-        <label for="node-input-port"><i class="fa fa-random"></i> SPI port</label>
-        <input type="text" id="node-input-port" placeholder="/dev/spidev0.0">
+        <label for="node-input-rowLength" style="width:145px;"><i class="fa fa-list-ol"></i> Length of Row</label>
+        <input type="text" id="node-input-rowLength" placeholder="" style="width:10%;">
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
@@ -38,7 +41,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="rpi-ws2801">
+<script type="text/x-red" data-help-name="rpi-ws281x-native">
     <p>A node to control ws2801 based LED strips.</p>
     <p>You can choose between different functions using <code>msg.topic</code>
     with the arguments sent as <code>msg.payload</code>.</p>
