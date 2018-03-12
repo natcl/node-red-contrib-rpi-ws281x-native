@@ -3,14 +3,14 @@
         category: 'Raspberry Pi',
         color: '#c6dbef',
         defaults: {
-            numleds: {
+            width: {
+                value: 0
+            },
+            height: {
                 value: 1
             },
             mode: {
                 value: "default"
-            },
-            rowLength: {
-                value: 0
             },
             name: {
                 value: ""
@@ -28,12 +28,12 @@
 
 <script type="text/x-red" data-template-name="rpi-ws281x-native">
     <div class="form-row">
-        <label for="node-input-numleds" style="width:145px;"><i class="fa fa-list-ol"></i> Number of LEDs</label>
-        <input type="text" id="node-input-numleds" placeholder="" style="width:10%;">
+        <label for="node-input-width" style="width:145px;"><i class="fa fa-list-ol"></i> Width</label>
+        <input type="text" id="node-input-width" placeholder="" style="width:10%;">
     </div>
     <div class="form-row">
-        <label for="node-input-rowLength" style="width:145px;"><i class="fa fa-list-ol"></i> Length of Row</label>
-        <input type="text" id="node-input-rowLength" placeholder="" style="width:10%;">
+        <label for="node-input-height" style="width:145px;"><i class="fa fa-list-ol"></i> Height</label>
+        <input type="text" id="node-input-height" placeholder="" style="width:10%;">
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>

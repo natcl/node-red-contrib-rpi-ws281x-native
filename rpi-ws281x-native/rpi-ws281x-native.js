@@ -7,13 +7,11 @@ module.exports = function(RED) {
 
         node.leds = require("rpi-ws281x-native");
 
-        node.numLeds = parseInt(config.numleds);
+        node.width = parseInt(config.width);
+        node.height = parseInt(config.height);
+
+        node.numLeds = node.width * node.height;
         node.mode = config.mode;
-        if (config.rowLength == 0)
-            node.rowLength = node.numLeds;
-        else {
-            node.rowLength = parseInt(config.rowLength);
-        }
 
         node.finalArray = new Uint32Array(node.numLeds);
 
@@ -23,7 +21,7 @@ module.exports = function(RED) {
             const mode = msg.mode || node.mode;
 
             if (Buffer.isBuffer(msg.payload)) {
-                node.bufferToArray(msg.payload, node.numLeds, mode, node.rowLength);
+                node.bufferToArray(msg.payload, node.numLeds, mode, node.width);
                 node.leds.render(node.finalArray);
             }
         });
