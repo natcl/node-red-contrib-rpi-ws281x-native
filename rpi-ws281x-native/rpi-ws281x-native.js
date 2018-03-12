@@ -12,10 +12,11 @@ module.exports = function(RED) {
         if (config.rowLength == 0)
             node.rowLength = node.numLeds;
         else {
-            node.rowLength = config.rowLength;
+            node.rowLength = parseInt(config.rowLength);
         }
 
         node.finalArray = new Uint32Array(node.numLeds);
+
         node.leds.init(node.numLeds, {dmaNum: 10});
 
         node.on('input', function(msg) {
@@ -23,7 +24,7 @@ module.exports = function(RED) {
 
             if (Buffer.isBuffer(msg.payload)) {
                 node.bufferToArray(msg.payload, node.numLeds, mode, node.rowLength);
-                node.leds.render(node.leds);
+                node.leds.render(node.finalArray);
             }
         });
 
