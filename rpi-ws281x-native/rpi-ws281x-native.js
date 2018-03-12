@@ -8,7 +8,11 @@ module.exports = function(RED) {
         node.leds = require("rpi-ws281x-native");
         node.numLeds = parseInt(config.numleds);
         node.mode = config.mode;
-        node.rowLength = config.rowLength;
+        if (config.rowLength == 0)
+            node.rowLength = node.numLeds;
+        else {
+            node.rowLength = node.numLeds;
+        }
 
         node.finalArray = new Uint32Array(node.numLeds);
         node.leds.init(node.numLeds, {dmaNum: 10});
@@ -17,7 +21,7 @@ module.exports = function(RED) {
             const mode = msg.mode || node.mode;
 
             if (Buffer.isBuffer(msg.payload)) {
-                node.bufferToArray(msg.payload, node.numLeds, mode);
+                node.bufferToArray(msg.payload, node.numLeds, mode, node.rowLength);
                 node.leds.render(node.leds);
             }
         });
@@ -30,9 +34,8 @@ module.exports = function(RED) {
             }
         });
 
-        node.bufferToArray = (buffer, numLeds, mode) => {
+        node.bufferToArray = (buffer, numLeds, mode, rowLength) => {
             if (mode == 'canvas') {
-                const rowLength = 8;
                 for (let p = 0; p < numLeds; p++) {
                     let rowNum = Math.floor(p/rowLength);
                     // Si impair
