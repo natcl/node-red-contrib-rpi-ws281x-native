@@ -6,6 +6,7 @@ module.exports = function(RED) {
         var node = this;
 
         node.leds = require("rpi-ws281x-native");
+
         node.numLeds = parseInt(config.numleds);
         node.mode = config.mode;
         if (config.rowLength == 0)
