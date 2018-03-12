@@ -12,7 +12,7 @@ module.exports = function(RED) {
         if (config.rowLength == 0)
             node.rowLength = node.numLeds;
         else {
-            node.rowLength = node.numLeds;
+            node.rowLength = config.rowLength;
         }
 
         node.finalArray = new Uint32Array(node.numLeds);
