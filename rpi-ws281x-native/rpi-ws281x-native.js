@@ -14,11 +14,10 @@ module.exports = function(RED) {
         node.mode = config.mode;
 
         node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
-        node.leds.setBrightness(node.brightness);
-
         node.finalArray = new Uint32Array(node.numLeds);
 
         node.leds.init(node.numLeds, {dmaNum: 10});
+        node.leds.setBrightness(node.brightness);
 
         node.on('input', function(msg) {
             const mode = msg.mode || node.mode;
