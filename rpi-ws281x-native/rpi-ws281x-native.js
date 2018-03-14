@@ -18,6 +18,7 @@ module.exports = function(RED) {
 
         node.leds.init(node.numLeds, {dmaNum: 10});
         node.leds.setBrightness(node.brightness);
+        node.leds.render(node.finalArray);
 
         node.on('input', function(msg) {
             const mode = msg.mode || node.mode;
