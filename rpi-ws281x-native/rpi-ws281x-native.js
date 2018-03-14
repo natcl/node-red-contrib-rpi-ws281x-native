@@ -17,8 +17,6 @@ module.exports = function(RED) {
         node.finalArray = new Uint32Array(node.numLeds);
 
         node.leds.init(node.numLeds, {dmaNum: 10, brightness: node.brightness});
-        //node.leds.setBrightness(node.brightness);
-        //node.leds.render(node.finalArray);
 
         node.on('input', function(msg) {
             const mode = msg.mode || node.mode;
