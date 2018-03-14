@@ -9,6 +9,10 @@
             height: {
                 value: 1
             },
+            brightness: {
+                value: 50,
+                validate: function(v) { return v >= 0 && v <= 100 }
+            },
             mode: {
                 value: "default"
             },
@@ -34,6 +38,10 @@
     <div class="form-row">
         <label for="node-input-height" style="width:145px;"><i class="fa fa-arrows-v"></i> Height</label>
         <input type="text" id="node-input-height" placeholder="" style="width:10%;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-brightness" style="width:145px;"><i class="fa fa-arrows-v"></i> Height</label>
+        <input type="text" id="node-input-brightness" placeholder="" style="width:10%;">
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>

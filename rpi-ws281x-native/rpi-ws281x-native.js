@@ -13,6 +13,9 @@ module.exports = function(RED) {
         node.numLeds = node.width * node.height;
         node.mode = config.mode;
 
+        node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
+        node.leds.setBrightness(node.brightness);
+
         node.finalArray = new Uint32Array(node.numLeds);
 
         node.leds.init(node.numLeds, {dmaNum: 10});
