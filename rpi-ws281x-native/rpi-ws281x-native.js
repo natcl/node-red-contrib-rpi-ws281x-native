@@ -12,6 +12,7 @@ module.exports = function(RED) {
 
         node.numLeds = node.width * node.height;
         node.mode = config.mode;
+        node.reverse = config.reverse;
 
         node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
         node.finalArray = new Uint32Array(node.numLeds);
@@ -40,7 +41,7 @@ module.exports = function(RED) {
                 for (let p = 0; p < numLeds; p++) {
                     let rowNum = Math.floor(p/rowLength);
                     // Si impair
-                    if (rowNum % 2 == 1) {
+                    if ((rowNum % 2 == 1) && node.reverse) {
                         node.finalArray[(2 * rowNum * rowLength) - p + rowLength - 1] = buffer.readUInt32LE(p*4);
                     } else {
                         node.finalArray[p] = buffer.readUInt32LE(p*4);

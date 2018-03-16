@@ -13,6 +13,9 @@
                 value: 50,
                 validate: function(v) { return v >= 0 && v <= 100 }
             },
+            reverse: {
+                value: true
+            },
             mode: {
                 value: "default"
             },
@@ -42,6 +45,10 @@
     <div class="form-row">
         <label for="node-input-brightness" style="width:145px;"><i class="fa fa-sun-o"></i> Brightness (0-100)</label>
         <input type="text" id="node-input-brightness" placeholder="" style="width:10%;">
+    </div>
+    <div class="form-row">
+        <input type="checkbox" id="node-input-reverse" style="display: inline-block; width: auto; vertical-align: top;">
+        <label style="width: auto;" for="node-input-reverse">Reverse odd lines</label></input>
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
