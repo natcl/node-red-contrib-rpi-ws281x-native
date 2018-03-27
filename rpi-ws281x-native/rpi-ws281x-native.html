@@ -3,6 +3,9 @@
         category: 'Raspberry Pi',
         color: '#c6dbef',
         defaults: {
+            striptype: {
+                value: 'ws2812'
+            }
             width: {
                 value: 0
             },
@@ -34,6 +37,27 @@
 </script>
 
 <script type="text/x-red" data-template-name="rpi-ws281x-native">
+    <div class="form-row">
+        <label for="node-input-striptype"><i class="fa fa-dot-circle-o"></i> Strip Type</label>
+        <select id="node-input-striptype" style="width:120px; margin-right:5px;">
+            <option value="ws2812">ws2812</option>
+            <option value="sk6812">sk6812</option>
+            <option value="sk6812w">sk6812w</option>
+            <option value="sk6812-rgbw">sk6812-rgbw</option>
+            <option value="sk6812-rbgw">sk6812-rbgw</option>
+            <option value="sk6812-grbw">sk6812-grbw</option>
+            <option value="sk6812-gbrw">sk6812-gbrw</option>
+            <option value="sk6812-brgw">sk6812-brgw</option>
+            <option value="sk6812-bgrw">sk6812-bgrw</option>
+            <option value="ws2811-rgb">ws2811-rgb</option>
+            <option value="ws2811-rbg">ws2811-rbg</option>
+            <option value="ws2811-grb">ws2811-grb</option>
+            <option value="ws2811-gbr">ws2811-gbr</option>
+            <option value="ws2811-brg">ws2811-brg</option>
+            <option value="ws2811-bgr">ws2811-bgr</option>
+        </select>
+        <span data-i18n="tcpin.label.port"></span> <input type="text" id="node-input-port" style="width:65px">
+    </div>
     <div class="form-row">
         <label for="node-input-width" style="width:145px;"><i class="fa fa-arrows-h"></i> Width</label>
         <input type="text" id="node-input-width" placeholder="" style="width:10%;">

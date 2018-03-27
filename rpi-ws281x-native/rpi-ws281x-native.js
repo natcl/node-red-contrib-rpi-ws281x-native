@@ -13,11 +13,12 @@ module.exports = function(RED) {
         node.numLeds = node.width * node.height;
         node.mode = config.mode;
         node.reverse = config.reverse;
+        node.stripType = config.striptype;
 
         node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
 
         const options = {
-            stripType: 'ws2812',
+            stripType: node.stripType,
             dma: 10,
             brightness: node.brightness
         };
