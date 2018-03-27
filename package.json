@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Node-RED node to control ws281x based led strips on the Raspberry pi.",
   "dependencies": {
-      "rpi-ws281x-native": "0.8.2"
+      "rpi-ws281x-native": "next"
   },
   "repository": {
     "type": "git",

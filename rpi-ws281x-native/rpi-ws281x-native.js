@@ -5,7 +5,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
 
-        node.leds = require("rpi-ws281x-native");
+        const ws281x = require('rpi-ws281x-native');
 
         node.width = parseInt(config.width);
         node.height = parseInt(config.height);
@@ -15,22 +15,27 @@ module.exports = function(RED) {
         node.reverse = config.reverse;
 
         node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
-        node.finalArray = new Uint32Array(node.numLeds);
 
-        node.leds.init(node.numLeds, {dmaNum: 10, brightness: node.brightness});
+        const options = {
+            stripType: 'ws2812',
+            dma: 10,
+            brightness: node.brightness
+        };
+        node.leds = ws281x(node.numLeds, options);
+        node.finalArray = node.leds.array;
 
         node.on('input', function(msg) {
             const mode = msg.mode || node.mode;
 
             if (Buffer.isBuffer(msg.payload)) {
                 node.bufferToArray(msg.payload, node.numLeds, mode, node.width);
-                node.leds.render(node.finalArray);
+                ws281x.render(node.finalArray);
             }
         });
 
         node.on('close', function() {
             try {
-                node.leds.reset();
+                ws281x.finalize();
             } catch (e) {
                 node.error("Error closing LEDs");
             }
