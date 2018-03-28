@@ -13,12 +13,6 @@ module.exports = function(RED) {
         node.numLeds = node.width * node.height;
         node.reverse = config.reverse;
         node.stripType = config.striptype;
-        if (node.stripType.match(/-...w/g)) {
-            node.numChannels = 4;
-        } else {
-            node.numChannels = 3;
-        }
-
 
         node.brightness = Math.floor(parseInt(config.brightness) * 255 / 100);
 
@@ -50,9 +44,9 @@ module.exports = function(RED) {
                 let rowNum = Math.floor(p/rowLength);
                 // Si impair
                 if ((rowNum % 2 == 1) && node.reverse) {
-                    node.finalArray[(2 * rowNum * rowLength) - p + rowLength - 1] = buffer.readUInt32LE(p * node.numChannels);
+                    node.finalArray[(2 * rowNum * rowLength) - p + rowLength - 1] = buffer.readUInt32LE(p * 4);
                 } else {
-                    node.finalArray[p] = buffer.readUInt32LE(p * node.numChannels);
+                    node.finalArray[p] = buffer.readUInt32LE(p * 4);
                 }
             }
         };
