@@ -13,7 +13,7 @@ module.exports = function(RED) {
         node.numLeds = node.width * node.height;
         node.reverse = config.reverse;
         node.stripType = config.striptype;
-        if (node.stripType.includes('w')) {
+        if (node.stripType.match(/-...w/g)) {
             node.numChannels = 4;
         } else {
             node.numChannels = 3;
