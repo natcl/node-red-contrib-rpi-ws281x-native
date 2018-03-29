@@ -64,7 +64,6 @@ module.exports = function(RED) {
                             buffer.copy(pixel, 0, p*4, (p*4)+4);
                             node.finalArray[reversedIndex] = pixel.readUInt32LE(0);
                         }
-
                     }
                 // Even line
                 } else {
@@ -79,7 +78,6 @@ module.exports = function(RED) {
                             buffer.copy(pixel, 0, p*4, (p*4)+4);
                             node.finalArray[p] = pixel.readUInt32LE(0);
                         }
-
                     }
                 }
             }
