@@ -61,7 +61,7 @@ module.exports = function(RED) {
                         } else {
                             buffer.copy(pixel, 0, p*4, (p*4)+4);
                         }
-                        node.finalArray[(2 * rowNum * rowLength) - p + rowLength - 1] = pixel.readUInt32BE(0);
+                        node.finalArray[(2 * rowNum * rowLength) - p + rowLength - 1] = pixel.readUInt32LE(0);
                     }
                 // Even line
                 } else {
@@ -74,7 +74,7 @@ module.exports = function(RED) {
                         } else {
                             buffer.copy(pixel, 0, p*4, (p*4)+4);
                         }
-                        node.finalArray[p] = pixel.readUInt32BE(0);
+                        node.finalArray[p] = pixel.readUInt32LE(0);
                     }
                 }
             }
