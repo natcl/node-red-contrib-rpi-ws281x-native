@@ -6,6 +6,9 @@
             striptype: {
                 value: 'ws2812'
             },
+            gpio: {
+                value: 18
+            },
             width: {
                 value: 0
             },
@@ -55,6 +58,21 @@
             <option value="ws2811-gbr">ws2811-gbr</option>
             <option value="ws2811-brg">ws2811-brg</option>
             <option value="ws2811-bgr">ws2811-bgr</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-gpio"><i class="fa fa-dot-circle-o"></i> Pin</label>
+        <select id="node-input-gpio" style="width:120px; margin-right:5px;">
+            <option value="PWM" disabled>PWM</option>
+            <option value="GPIO 12 (pin 32)">12</option>
+            <option value="GPIO 18 (pin 12)">18</option>
+            <option value="GPIO 13 (pin 33)">13</option>
+
+            <option value="PCM" disabled>PCM</option>
+            <option value="GPIO 21 (pin 33)">40</option>
+
+            <option value="SPI" disabled>SPI</option>
+            <option value="GPIO 10 (pin 19)">10</option>
         </select>
     </div>
     <div class="form-row">

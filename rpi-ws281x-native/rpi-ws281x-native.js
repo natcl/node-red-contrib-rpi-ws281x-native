@@ -14,6 +14,7 @@ module.exports = function(RED) {
         node.mode = config.mode;
         node.reverse = config.reverse;
         node.stripType = config.striptype;
+        node.gpio = parseInt(config.gpio);
         if (node.stripType.match(/-...w/g)) {
             node.numChannels = 4;
         } else {
@@ -24,6 +25,7 @@ module.exports = function(RED) {
 
         const options = {
             stripType: node.stripType,
+            gpio: node.gpio,
             dma: 10,
             brightness: node.brightness
         };
